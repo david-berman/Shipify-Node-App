@@ -27,7 +27,7 @@ Shipment.prototype.getInvoices = function getInvoices(authorization, instanceUrl
 	* to only show line items related to merchandise from that particular warehouse */
 	if (warehouseId && warehouseId != 'undefined' && warehouseId != '' && (warehouseId.length == 15 || warehouseId.length == 18)) {
 		var warehouseId15Chars = warehouseId.substr(0, 15);
-		q += " where Warehouse__C = '" + warehouseId + "' OR Warehouse__C = '" + warehouseId15Chars + "'";
+		q += " where Warehouse__c = '" + warehouseId + "' OR Warehouse__c = '" + warehouseId15Chars + "'";
 	}
 
 	//this starts building the REST call to query for the list of line items
@@ -113,7 +113,7 @@ Shipment.prototype.ship = function ship(so) {
 Shipment.prototype._closeInvoice = function _closeInvoice(so) {
 	var authorization = this._formatAuthHeader(so.authorization);
 	var body = {
-		'Status__C': 'Closed'
+		'Status__c': 'Closed'
 	}
 	var reqOptions = {
 		url: so.instanceUrl + '/services/data/v28.0/sobjects/Invoice__C/' + so.invoiceId,
