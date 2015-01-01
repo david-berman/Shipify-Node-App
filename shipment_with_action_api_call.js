@@ -99,7 +99,7 @@ Shipment.prototype.getOpenInvoiceIdsFromLineItems = function getOpenInvoiceIdsFr
 	var q = 'SELECT Invoice__c From Line_Item__c';
 	var wId = this._formatWarehouseId(warehouseId);
 	if (wId) {
-		q += " where Warehouse__C = '" + wId.chars18 + "' OR Warehouse__C = '" + wId.chars15 + "'";
+		q += " where Warehouse__c = '" + wId.chars18 + "' OR Warehouse__c = '" + wId.chars15 + "'";
 	}
 
 	var reqOptions = {
@@ -153,11 +153,11 @@ Shipment.prototype.closeInvoice = function closeInvoice(so) {
 	var authorization = this._formatAuthHeader(so.authorization);
 
 	var body = {
-		'Status__C': 'Closed'
+		'Status__c': 'Closed'
 	};
 
 	var reqOptions = {
-		url: so.instanceUrl + '/services/data/v28.0/sobjects/Invoice__C/' + so.invoiceId,
+		url: so.instanceUrl + '/services/data/v28.0/sobjects/Invoice__c/' + so.invoiceId,
 		method: 'PATCH',
 		headers: {
 			'Authorization': authorization,
