@@ -96,7 +96,7 @@ Shipment.prototype.ship = function ship(so) {
 
 Shipment.prototype.getOpenInvoiceIdsFromLineItems = function getOpenInvoiceIdsFromLineItems(authorization, instanceUrl, warehouseId) {
 	var self = this;
-	var q = 'SELECT Invoice__c From Line_Item__C';
+	var q = 'SELECT Invoice__c From Line_Item__c';
 	var wId = this._formatWarehouseId(warehouseId);
 	if (wId) {
 		q += " where Warehouse__C = '" + wId.chars18 + "' OR Warehouse__C = '" + wId.chars15 + "'";
